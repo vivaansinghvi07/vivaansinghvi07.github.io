@@ -1,18 +1,18 @@
 /*
  * This code is taken from Hyperplexed video https://www.youtube.com/watch?v=bAwEj_mSzOs
  */
-let isMenuPageActive = false;
+let isPortfolioPageActive = false;
 let animationRunning = false;
 
-function toggleMenuPage(router, on) {
-  if (on !== undefined && on === isMenuPageActive) {
+function togglePortfolioPage(router, on) {
+  if (on !== undefined && on === isPortfolioPageActive) {
     return;
   }
-  isMenuPageActive = !isMenuPageActive;
-  ['.main-page-intro', '.main-page-menu'].map((x, index) => {
-    isMenuPageActive == index ? show(x) : hide(x);
+  isPortfolioPageActive = !isPortfolioPageActive;
+  ['.main-page-intro', '.main-page-portfolio'].map((x, index) => {
+    isPortfolioPageActive == index ? show(x) : hide(x);
   });
-  router.navigate(isMenuPageActive ? '/menu' : '/');
+  router.navigate(isPortfolioPageActive ? '/portfolio' : '/');
 }
 
 function loadBackground(router) {
@@ -23,11 +23,29 @@ function loadBackground(router) {
   let columns = 0, rows = 0;
 
   function handleOnClick(index) {
+    if (isPortfolioPageActive) return; // Prevent toggling back
     animationRunning = true;
-    toggleMenuPage(router);
+    togglePortfolioPage(router);
+    if (isPortfolioPageActive) {
+      document.documentElement.style.setProperty('--bg-solid', 'rgb(15, 15, 15)');
+      document.documentElement.style.setProperty('--bg-image', 'none');
+      document.getElementById('background-canvas').style.opacity = '1';
+      // Calculate click position
+      const col = index % columns;
+      const row = Math.floor(index / columns);
+      const tileWidth = container.clientWidth / columns;
+      const tileHeight = container.clientHeight / rows;
+      const x = col * tileWidth + tileWidth / 2;
+      const y = row * tileHeight + tileHeight / 2;
+      window.rippleParticles(x, y);
+    } else {
+      document.documentElement.style.setProperty('--bg-solid', 'transparent');
+      document.documentElement.style.setProperty('--bg-image', 'repeating-linear-gradient(to bottom right in hsl, var(--bg-col-1), var(--bg-col-2), var(--bg-col-1), var(--bg-col-2), var(--bg-col-1))');
+      document.getElementById('background-canvas').style.opacity = '0';
+    }
     anime({
       targets: ".tile",
-      opacity: isMenuPageActive ? 0 : 1,
+      opacity: isPortfolioPageActive ? 0 : 1,
       delay: anime.stagger(50, {
         grid: [columns, rows],
         from: index
@@ -39,7 +57,7 @@ function loadBackground(router) {
   function createTile(index) {
     const tile = document.createElement("div");
     tile.classList.add("tile");
-    tile.style.opacity = isMenuPageActive ? 0 : 1;
+    tile.style.opacity = isPortfolioPageActive ? 0 : 1;
     tile.onclick = _ => handleOnClick(index);
     return tile;
   }

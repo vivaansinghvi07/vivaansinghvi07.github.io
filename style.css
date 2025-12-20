@@ -1,6 +1,15 @@
 :root {
   --bg-col-1: rgb(0, 50, 150);
   --bg-col-2: rgb(0, 100, 200);
+  --bg-solid: transparent;
+  --bg-image: repeating-linear-gradient(
+    to bottom right in hsl,
+    var(--bg-col-1),
+    var(--bg-col-2),
+    var(--bg-col-1),
+    var(--bg-col-2),
+    var(--bg-col-1)
+  );
 }
 
 @media screen and (max-width: 850px) {
@@ -32,15 +41,8 @@
 
 body {
   font-family: "Iosevka Web";
-  animation: background-pan 10s linear infinite;
-  background: repeating-linear-gradient(
-    to bottom right in hsl,
-    var(--bg-col-1),
-    var(--bg-col-2),
-    var(--bg-col-1),
-    var(--bg-col-2),
-    var(--bg-col-1)
-  );
+  background-color: var(--bg-solid);
+  background-image: var(--bg-image);
   background-size: 200%;
   height: 100vh;
   overflow: hidden;
@@ -49,10 +51,21 @@ body {
   overflow-x: hidden;
 }
 
+#background-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
 .main-page-intro {
+  z-index: 2;
   grid-row-start: 1;
   grid-column: 1;
-  transition: opacity 1s ease-in .25s;
+  transition: opacity 1s ease-in 0.25s;
+  pointer-events: none;
 }
 
 .main-page-intro.hidden {
@@ -63,12 +76,124 @@ body {
 .main-page-menu {
   grid-row-start: 1;
   grid-column: 1;
-  transition: opacity 1s ease-in .25s;
+  transition: opacity 1s ease-in 0.25s;
 }
 
 .main-page-menu.hidden {
   visibility: hidden;
   opacity: 0;
+}
+
+.main-page-portfolio {
+  grid-row-start: 1;
+  grid-column: 1;
+  transition: opacity 1s ease-in 0.25s;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.main-page-portfolio.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.portfolio-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(15, 15, 15, 0.9);
+  padding: 10px 20px;
+  z-index: 10;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #00aaff;
+}
+
+.portfolio-content {
+  padding: 20px;
+  padding-top: 80px;
+  color: white;
+}
+
+.portfolio-content section {
+  margin-bottom: 60px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s, transform 0.6s;
+}
+
+.portfolio-content section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero h1 {
+  font-size: 4em;
+  margin-bottom: 10px;
+  background: linear-gradient(45deg, #00aaff, #0088cc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  font-size: 1.5em;
+  color: #cccccc;
+}
+
+.about h2,
+.projects h2,
+.contact h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #00aaff;
+  padding-bottom: 10px;
+}
+
+.about p {
+  font-size: 1.2em;
+  line-height: 1.6;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 170, 255, 0.3);
+}
+
+.project-card h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.contact p {
+  font-size: 1.2em;
 }
 
 .main-page-menu-items {
@@ -77,7 +202,7 @@ body {
   grid-template-rows: 1fr;
 }
 
-.main-page-menu-items>div {
+.main-page-menu-items > div {
   margin: var(--font-size-medium);
   width: fit-content;
   display: grid;
@@ -105,6 +230,7 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   place-items: center;
+  z-index: 2;
 }
 
 .main-page-name {
@@ -112,21 +238,11 @@ body {
   font-weight: 500;
   font-size: var(--font-size-large);
   width: max-content;
-  margin: auto; 
+  margin: auto;
 }
 
 .main-page-desc {
   font-size: var(--font-size-medium);
-}
-
-@keyframes background-pan {
-  from {
-    background-position: 0% center;
-  }
-  
-  to {
-    background-position: -200% center;
-  }
 }
 
 .centered {
@@ -140,24 +256,29 @@ body {
   height: calc(100vh - 1px);
   width: calc(100vw - 1px);
   position: relative;
-  
+  z-index: 1;
+
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);
   grid-template-rows: repeat(var(--rows), 1fr);
 }
 
 .tile {
+  z-index: 1;
   cursor: pointer;
   position: relative;
 }
 
 .tile:hover:before {
   background-color: rgb(30, 30, 30);
+  border-color: #0088cc;
+  border-width: 1px;
 }
 
 .tile:before {
   background-color: rgb(15, 15, 15);
+  border: 0.5px solid #008dd3;
   content: "";
-  inset: 0.5px;
+  inset: 0;
   position: absolute;
 }
