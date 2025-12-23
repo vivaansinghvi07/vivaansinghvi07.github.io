@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     9: {
         title: 'LLM Interpretability',
-        description: 'Replicates the paper "Identifying Functionally Important Features with End-to-End Sparse Dictionary Learning" by replacing one of the layers of GPT-2 with a Sparse Autoencoder, and studies the paper in a novel setting. See report <a href="assets/eecs498report.pdf">here</a>. Work done for a final project in EECS 498: Foundations of Language Models. Image taken from original paper.',
+        description: 'Replicates the paper "Identifying Functionally Important Features with End-to-End Sparse Dictionary Learning" by replacing one of the layers of GPT-2 with a Sparse Autoencoder, and studies the paper in a novel setting. Work done for a final project in EECS 498: Foundations of Language Models. Image taken from original paper.',
         image: 'assets/images/llm.png'
     },
     };
