@@ -356,12 +356,10 @@ body {
   font-size: var(--font-size-large);
   width: max-content;
   margin: auto;
-  pointer-events: all;
 }
 
 .main-page-desc {
   font-size: var(--font-size-medium);
-  pointer-events: all;
 }
 
 .centered {
