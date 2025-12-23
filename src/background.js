@@ -4,15 +4,29 @@
 let isPortfolioPageActive = false;
 let animationRunning = false;
 
-function togglePortfolioPage(router, on) {
-  if (on !== undefined && on === isPortfolioPageActive) {
-    return;
-  }
+function togglePortfolioPage() {
   isPortfolioPageActive = !isPortfolioPageActive;
-  ['.main-page-intro', '.main-page-portfolio'].map((x, index) => {
-    isPortfolioPageActive == index ? show(x) : hide(x);
+  ['.main-page-intro', '.main-page-portfolio', '.portfolio-nav'].map((x, index) => {
+    (isPortfolioPageActive ^ (index == 0)) ? show(x) : hide(x);
   });
-  router.navigate(isPortfolioPageActive ? '/portfolio' : '/');
+  const nav = document.querySelector('.portfolio-nav');
+  const container = document.querySelector('.main-page-container');
+  if (isPortfolioPageActive) {
+    document.documentElement.style.setProperty('--bg-solid', 'rgb(15, 15, 15)');
+    document.documentElement.style.setProperty('--bg-image', 'none');
+    document.getElementById('background-canvas').style.opacity = '1';
+    document.body.style.overflow = 'auto';
+    nav.style.display = 'flex';
+    nav.style.animation = 'fadeInNavbar 1s ease-in';
+    container.style.pointerEvents = 'auto';
+  } else {
+    document.documentElement.style.setProperty('--bg-solid', 'transparent');
+    document.documentElement.style.setProperty('--bg-image', 'repeating-linear-gradient(to bottom right in hsl, var(--bg-col-1), var(--bg-col-2), var(--bg-col-1), var(--bg-col-2), var(--bg-col-1))');
+    document.getElementById('background-canvas').style.opacity = '0';
+    document.body.style.overflow = 'hidden';
+    nav.style.display = 'none';
+    container.style.pointerEvents = 'none';
+  }
 }
 
 function loadBackground(router) {
@@ -23,26 +37,16 @@ function loadBackground(router) {
   let columns = 0, rows = 0;
 
   function handleOnClick(index) {
-    if (isPortfolioPageActive) return; // Prevent toggling back
+    if (isPortfolioPageActive) return;
     animationRunning = true;
-    togglePortfolioPage(router);
-    if (isPortfolioPageActive) {
-      document.documentElement.style.setProperty('--bg-solid', 'rgb(15, 15, 15)');
-      document.documentElement.style.setProperty('--bg-image', 'none');
-      document.getElementById('background-canvas').style.opacity = '1';
-      // Calculate click position
-      const col = index % columns;
-      const row = Math.floor(index / columns);
-      const tileWidth = container.clientWidth / columns;
-      const tileHeight = container.clientHeight / rows;
-      const x = col * tileWidth + tileWidth / 2;
-      const y = row * tileHeight + tileHeight / 2;
-      window.rippleParticles(x, y);
-    } else {
-      document.documentElement.style.setProperty('--bg-solid', 'transparent');
-      document.documentElement.style.setProperty('--bg-image', 'repeating-linear-gradient(to bottom right in hsl, var(--bg-col-1), var(--bg-col-2), var(--bg-col-1), var(--bg-col-2), var(--bg-col-1))');
-      document.getElementById('background-canvas').style.opacity = '0';
-    }
+    togglePortfolioPage();
+    const col = index % columns;
+    const row = Math.floor(index / columns);
+    const tileWidth = container.clientWidth / columns;
+    const tileHeight = container.clientHeight / rows;
+    const x = col * tileWidth + tileWidth / 2;
+    const y = row * tileHeight + tileHeight / 2;
+    window.rippleParticles(x, y);
     anime({
       targets: ".tile",
       opacity: isPortfolioPageActive ? 0 : 1,

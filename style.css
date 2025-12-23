@@ -62,8 +62,9 @@ body {
 
 .main-page-intro {
   z-index: 2;
-  grid-row-start: 1;
-  grid-column: 1;
+  color: rgb(239, 239, 239);
+  text-align: center;
+  position: fixed;
   transition: opacity 1s ease-in 0.25s;
   pointer-events: none;
 }
@@ -88,7 +89,6 @@ body {
   grid-row-start: 1;
   grid-column: 1;
   transition: opacity 1s ease-in 0.25s;
-  overflow-y: auto;
   height: 100vh;
 }
 
@@ -100,33 +100,59 @@ body {
 .portfolio-nav {
   position: fixed;
   top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 800px;
   width: 100%;
   background: rgba(15, 15, 15, 0.9);
-  padding: 10px 20px;
+  padding: 15px 20px;
   z-index: 10;
-}
-
-.nav-links {
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  transition: opacity 1s ease-in 0.25s;
 }
 
-.nav-links a {
+.portfolio-nav.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-left a,
+.nav-right a {
   color: white;
   text-decoration: none;
-  font-size: 1em;
+  font-size: 1.3em;
   transition: color 0.3s;
 }
 
-.nav-links a:hover {
+.nav-left a:hover,
+.nav-right a:hover {
   color: #00aaff;
+}
+
+@media (max-width: 850px) {
+  .nav-left {
+    display: none;
+  }
+  .portfolio-nav {
+    justify-content: center;
+  }
 }
 
 .portfolio-content {
   padding: 20px;
-  padding-top: 80px;
+  padding-top: 85px;
   color: white;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .portfolio-content section {
@@ -142,7 +168,7 @@ body {
 }
 
 .hero h1 {
-  font-size: 4em;
+  font-size: 3em;
   margin-bottom: 10px;
   background: linear-gradient(45deg, #00aaff, #0088cc);
   -webkit-background-clip: text;
@@ -150,22 +176,83 @@ body {
 }
 
 .hero p {
-  font-size: 1.5em;
+  font-size: 1.2em;
   color: #cccccc;
 }
 
 .about h2,
 .projects h2,
 .contact h2 {
-  font-size: 2.5em;
+  font-size: 2em;
   margin-bottom: 20px;
   border-bottom: 2px solid #00aaff;
   padding-bottom: 10px;
 }
 
 .about p {
-  font-size: 1.2em;
+  font-size: 1.1em;
   line-height: 1.6;
+}
+
+.education,
+.experience {
+  margin-top: 40px;
+}
+
+.education h3,
+.experience h3 {
+  font-size: 1.5em;
+  color: #00aaff;
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+.education-item,
+.experience-item {
+  background: rgba(0, 170, 255, 0.05);
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 3px solid #00aaff;
+  margin-bottom: 20px;
+}
+
+.education-item h4,
+.experience-item h4 {
+  font-size: 1.2em;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+}
+
+.education-meta,
+.experience-meta {
+  color: #00aaff;
+  font-size: 0.95em;
+  margin: 5px 0;
+  font-style: italic;
+}
+
+.education-affiliations,
+.education-coursework-button,
+.experience-description {
+  color: #cccccc;
+  font-size: 1em;
+  line-height: 1.5;
+  margin: 8px 0;
+}
+
+.coursework-trigger {
+  background: none;
+  border: none;
+  color: #00aaff;
+  cursor: pointer;
+  font-size: 1em;
+  padding: 0;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+.coursework-trigger:hover {
+  color: #00d9ff;
 }
 
 .project-grid {
@@ -176,10 +263,35 @@ body {
 
 .project-card {
   background: rgba(255, 255, 255, 0.1);
-  padding: 30px;
+  background-size: cover;
+  background-position: center;
+  padding: 40px;
   border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgb(139, 139, 139);
   transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(15, 15, 15, 0.7);
+  pointer-events: none;
+}
+
+.project-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .project-card:hover {
@@ -192,8 +304,12 @@ body {
   margin-bottom: 10px;
 }
 
+.project-card p {
+  font-size: 1.1em;
+}
+
 .contact p {
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 
 .main-page-menu-items {
@@ -231,6 +347,7 @@ body {
   grid-template-columns: 1fr;
   place-items: center;
   z-index: 2;
+  pointer-events: none;
 }
 
 .main-page-name {
@@ -239,10 +356,12 @@ body {
   font-size: var(--font-size-large);
   width: max-content;
   margin: auto;
+  pointer-events: all;
 }
 
 .main-page-desc {
   font-size: var(--font-size-medium);
+  pointer-events: all;
 }
 
 .centered {
@@ -255,7 +374,7 @@ body {
 #tiles {
   height: calc(100vh - 1px);
   width: calc(100vw - 1px);
-  position: relative;
+  position: fixed;
   z-index: 1;
 
   display: grid;
@@ -277,8 +396,171 @@ body {
 
 .tile:before {
   background-color: rgb(15, 15, 15);
-  border: 0.5px solid #008dd3;
+  border: 0.5px solid;
+  border-image: linear-gradient(90deg, #0088cc 0%, #0050b8 100%) 1;
   content: "";
   inset: 0;
   position: absolute;
+}
+
+/* Project Modal Styles */
+.project-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  animation: fadeIn 0.3s ease-in;
+}
+
+.project-modal.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 15, 15, 0.95),
+    rgba(30, 30, 50, 0.95)
+  );
+  padding: 40px;
+  border-radius: 15px;
+  border: 1px solid rgba(0, 170, 255, 0.3);
+  max-width: 600px;
+  max-height: 75vh;
+  overflow-y: auto;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0, 170, 255, 0.2);
+  animation: slideUp 0.3s ease-in;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.close-modal {
+  color: white;
+  position: absolute;
+  right: 17px;
+  top: 5px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-modal:hover {
+  color: #00aaff;
+}
+
+#modal-title {
+  color: #00aaff;
+  font-size: 1.8em;
+  margin-top: 0;
+  margin-bottom: 20px;
+  background: linear-gradient(45deg, #00aaff, #0088cc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#modal-body {
+  color: white;
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin: 0;
+}
+
+#modal-body p {
+  margin: 0;
+}
+
+.modal-image {
+  width: 100%;
+  height: 250px;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 170, 255, 0.1),
+    rgba(0, 136, 204, 0.1)
+  );
+  border-radius: 10px;
+  margin-bottom: 20px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9em;
+  border: 1px solid rgba(0, 170, 255, 0.2);
+}
+
+/* Coursework Modal Styles */
+.coursework-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  animation: fadeIn 0.3s ease-in;
+}
+
+.coursework-modal.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#coursework-title {
+  color: #00aaff;
+  font-size: 1.8em;
+  margin-top: 0;
+  margin-bottom: 20px;
+  background: linear-gradient(45deg, #00aaff, #0088cc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.coursework-body {
+  color: white;
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+.coursework-body ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.coursework-body li {
+  margin: 8px 0;
+  color: #cccccc;
+}
+
+.coursework-body li strong {
+  color: #00aaff;
 }

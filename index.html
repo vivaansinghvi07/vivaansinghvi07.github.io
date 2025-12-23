@@ -27,148 +27,311 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <script src="https://unpkg.com/navigo"></script>
     <script src="src/utils.js"></script>
     <script src="src/particles.js"></script>
     <script src="src/background.js"></script>
     <script src="src/script.js"></script>
-    <script type="text/javascript">
-      // Single Page Apps for GitHub Pages
-      // MIT License
-      // https://github.com/rafgraph/spa-github-pages
-      // This script checks to see if a redirect is present in the query string,
-      // converts it back into the correct url and adds it to the
-      // browser's history using window.history.replaceState(...),
-      // which won't cause the browser to attempt to load the new url.
-      // When the single page app is loaded further down in this file,
-      // the correct url will be waiting in the browser's history for
-      // the single page app to route accordingly.
-      (function (l) {
-        if (l.search[1] === "/") {
-          var decoded = l.search
-            .slice(1)
-            .split("&")
-            .map(function (s) {
-              return s.replace(/~and~/g, "&");
-            })
-            .join("?");
-          window.history.replaceState(
-            null,
-            null,
-            l.pathname.slice(0, -1) + decoded + l.hash
-          );
-        }
-      })(window.location);
-    </script>
+    <script src="src/projects.js"></script>
   </head>
   <body>
-    <!-- <div id="root"> -->
-    <!--   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top"> -->
-    <!--     <div class="container-fluid"> -->
-    <!--       <a -->
-    <!--         href="/" -->
-    <!--         class="navbar-brand" -->
-    <!--         style="margin-left: 10px; margin-top: 3px" -->
-    <!--         ><img -->
-    <!--           src="/assets/images/logo.png" -->
-    <!--           style=" -->
-    <!--             height: 30px; -->
-    <!--             width: auto; -->
-    <!--             margin-right: 15px; -->
-    <!--             margin-bottom: 5px; -->
-    <!--           " -->
-    <!--         />Vivaan Singhvi</a -->
-    <!--       ><button -->
-    <!--         aria-label="Toggle navigation" -->
-    <!--         type="button" -->
-    <!--         class="navbar-toggler" -->
-    <!--       > -->
-    <!--         <span class="navbar-toggler-icon"></span> -->
-    <!--       </button> -->
-    <!--       <div class="collapse navbar-collapse"> -->
-    <!--         <ul class="mr-auto navbar-nav"> -->
-    <!--           <li class="nav-item"> -->
-    <!--             <a href="/aboutme" class="nav-link">About Me</a> -->
-    <!--           </li> -->
-    <!--           <li class="nav-item"> -->
-    <!--             <a href="/projects" class="nav-link">Projects</a> -->
-    <!--           </li> -->
-    <!--         </ul> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--   </nav> -->
     <canvas id="background-canvas"></canvas>
     <div id="tiles"></div>
+    <div class="main-page-intro center">
+      <div class="main-page-name">Vivaan Singhvi</div>
+      <div class="main-page-desc">CLick anywhere to enter.</div>
+    </div>
     <div class="main-page-container center">
-      <div class="main-page-intro">
-        <div class="main-page-name">Vivaan Singhvi</div>
-        <div class="main-page-desc">
-          Word. Word. Word. Word. Word. Word. Word. Word.
-        </div>
-      </div>
       <div class="main-page-portfolio hidden">
-        <nav class="portfolio-nav">
-          <div class="nav-links">
-            <a href="#hero">Home</a>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-            <a href="/resume.pdf" target="_blank">Resume</a>
-            <a href="https://linkedin.com/in/vivaan" target="_blank"
-              >LinkedIn</a
-            >
-            <a href="https://github.com/vivaansinghvi07" target="_blank"
-              >GitHub</a
-            >
-          </div>
-        </nav>
         <div class="portfolio-content">
           <section id="hero" class="hero">
-            <h1>Vivaan Singhvi</h1>
-            <p>Developer & Creator</p>
+            <h1>Hello, I'm Vivaan.</h1>
+            <p>Machine Learning Researcher</p>
           </section>
           <section id="about" class="about">
             <h2>About Me</h2>
             <p>
-              Hello! I'm Vivaan Singhvi, a passionate developer and creator. I
-              love building interactive web experiences and exploring new
-              technologies.
+              I love anything machine learning, and am particularly interested
+              in computer vision systems and how to break them. Lately, I've
+              been especially intrigued with both the development and
+              application of 3D reconstruction algorithms.
             </p>
+            <p>
+              I also have broad experience across many fields of computer
+              science like software engineering, operating systems, and GPU
+              programming.
+            </p>
+
+            <div class="education">
+              <h3>Education</h3>
+              <div class="education-item">
+                <h4>University of Michigan, Ann Arbor</h4>
+                <p class="education-meta">
+                  Computer Science BSE | GPA: 4.00 | August 2024 &ndash; May
+                  2026
+                </p>
+                <p class="education-affiliations">
+                  <strong>Affiliations:</strong> Michigan RoboSub, Michigan
+                  Research and Discovery Scholars
+                </p>
+                <p class="education-coursework-button">
+                  <strong>Relevant Coursework:</strong>
+                  <button class="coursework-trigger" data-coursework="1">
+                    View Courses
+                  </button>
+                </p>
+              </div>
+            </div>
+
+            <div class="experience">
+              <h3>Experience</h3>
+              <div class="experience-item">
+                <h4>Instructional Aide</h4>
+                <p class="experience-meta">
+                  EECS 482: Operating Systems | January 2026 &ndash; May 2026
+                </p>
+                <p class="experience-description">
+                  Will assist in teaching the course, grading assignments,
+                  hosting office hours, and promptly answering questions on
+                  Piazza.
+                </p>
+              </div>
+              <div class="experience-item">
+                <h4>Peer Advisor</h4>
+                <p class="experience-meta">
+                  Michigan Research and Discovery Scholars | August 2025 &ndash;
+                  May 2026
+                </p>
+                <p class="experience-description">
+                  Mentoring 16 first-years as they engage in undergraduate
+                  research, developing academic and professional skills.
+                </p>
+              </div>
+              <div class="experience-item">
+                <h4>Summer Research Intern</h4>
+                <p class="experience-meta">
+                  Oak Ridge National Laboratory | May 2025 &ndash; August 2025
+                </p>
+                <p class="experience-description">
+                  Applied 3D reconstruction algorithms for adversarial machine
+                  learning.
+                </p>
+              </div>
+              <div class="experience-item">
+                <h4>Undergraduate Research Assistant</h4>
+                <p class="experience-meta">
+                  University of Michigan Zaman E<sup>3</sup> Lab | September
+                  2024 &ndash; May 2026
+                </p>
+                <p class="experience-description">
+                  Optimized phylogenetic reconstruction for digital evolution by
+                  thousands of times. Currently working on analyzing evolution
+                  in cellular automata.
+                </p>
+              </div>
+              <div class="experience-item">
+                <h4>Summer Research Intern</h4>
+                <p class="experience-meta">
+                  Oak Ridge National Laboratory | June 2024 &ndash; July 2024
+                </p>
+                <p class="experience-description">
+                  Developed a novel attack and defense for image classification
+                  models.
+                </p>
+              </div>
+            </div>
           </section>
           <section id="projects" class="projects">
             <h2>Projects</h2>
             <div class="project-grid">
-              <div class="project-card">
-                <h3>Project 1</h3>
-                <p>Description of project 1.</p>
+              <div
+                class="project-card"
+                data-project="1"
+                style="background-image: url('assets/images/adv_patch.png')"
+              >
+                <h3>Physical Patch Attack</h3>
+                <p>
+                  Camoflauging real-life objects from YOLO models using neural
+                  3D recontruction
+                </p>
               </div>
-              <div class="project-card">
-                <h3>Project 2</h3>
-                <p>Description of project 2.</p>
+              <div
+                class="project-card"
+                data-project="2"
+                style="background-image: url('assets/images/mouse.jpg')"
+              >
+                <h3>Wearable Mouse</h3>
+                <p>
+                  A wearable Bluetooth mouse supporting intuitive motion control
+                  and dozens of gestures
+                </p>
               </div>
-              <div class="project-card">
-                <h3>Project 3</h3>
-                <p>Description of project 3.</p>
+              <div
+                class="project-card"
+                data-project="5"
+                style="background-image: url('assets/images/hsad.png')"
+              >
+                <h3>HSAD</h3>
+                <p>
+                  A novel defense for image classification models against
+                  adversarial images
+                </p>
+              </div>
+              <div
+                class="project-card"
+                data-project="4"
+                style="background-image: url('assets/images/phylo.png')"
+              >
+                <h3 style="font-size: 1.3em">
+                  Phylogenetic Reconstruction Optimization
+                </h3>
+                <p>A more efficient algorithm for tracking digital evolution</p>
+              </div>
+              <div
+                class="project-card"
+                data-project="8"
+                style="background-image: url('assets/images/cudaconv.png')"
+              >
+                <h3>Custom CUDA Convolution</h3>
+                <p>A novel, efficient, GPU-friendly convolution algorithm</p>
+              </div>
+              <div
+                class="project-card"
+                data-project="9"
+                style="background-image: url('assets/images/llm.png')"
+              >
+                <h3>LLM Interpretability</h3>
+                <p>
+                  An analysis on feature sparsification in a language model's
+                  activations
+                </p>
+              </div>
+              <div
+                class="project-card"
+                data-project="3"
+                style="
+                  background-image: url('assets/images/rubix-cube-solver.png');
+                "
+              >
+                <h3>Rubik's Cube Solver</h3>
+                <p>Reconstructs and solves a 3x3x3 Rubik's cube from a video</p>
+              </div>
+              <div
+                class="project-card"
+                data-project="6"
+                style="background-image: url('assets/images/bim.png')"
+              >
+                <h3>Bim</h3>
+                <p>A feature-rich multi-modal terminal text editor, like Vim</p>
+              </div>
+              <div
+                class="project-card"
+                data-project="7"
+                style="background-image: url('assets/images/smc.png')"
+              >
+                <h3>SMCDC 2023</h3>
+                <p>
+                  A high-throughput computer vision pipeline for plant images
+                </p>
               </div>
             </div>
           </section>
           <section id="contact" class="contact">
             <h2>Contact</h2>
-            <p>Get in touch!</p>
+            <p>Get in touch! I look forward to hearing from you.</p>
+            <p>
+              Email: <a href="mailto:vsinghvi@umich.edu">vsinghvi@umich.edu</a>
+            </p>
+            <p>Phone: <a href="tel:+18652479952">(865)-247-9952</a></p>
           </section>
         </div>
       </div>
     </div>
+    <nav class="portfolio-nav hidden">
+      <div class="nav-left">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-right">
+        <a href="assets/resume.pdf" target="_blank" title="Resume">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V8L14 2ZM16 18H8V16H16V18ZM16 14H8V12H16V14ZM13 9V3.5L18.5 9H13Z"
+              fill="white"
+            />
+          </svg>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/vivaan-singhvi-02525027a/"
+          target="_blank"
+          title="LinkedIn"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M20.447 20.452H16.893V14.883C16.893 13.556 16.866 11.846 15.041 11.846C13.188 11.846 12.905 13.291 12.905 14.784V20.452H9.351V9H12.765V10.561H12.812C13.288 9.661 14.447 8.728 16.181 8.728C19.782 8.728 20.451 11.104 20.451 14.166V20.452H20.447Z"
+              fill="white"
+            />
+            <path
+              d="M5.337 7.433C4.193 7.433 3.274 6.507 3.274 5.368C3.274 4.23 4.193 3.305 5.337 3.305C6.484 3.305 7.403 4.23 7.403 5.368C7.403 6.507 6.484 7.433 5.337 7.433Z"
+              fill="white"
+            />
+            <path d="M7.119 20.452H3.562V9H7.119V20.452Z" fill="white" />
+          </svg>
+        </a>
+        <a
+          href="https://github.com/vivaansinghvi07"
+          target="_blank"
+          title="GitHub"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 2C6.477 2 2 6.484 2 12.017C2 16.396 4.865 20.017 9.05 21.281C9.55 21.375 9.725 21.064 9.725 20.79C9.725 20.54 9.716 19.777 9.716 18.974C7.896 19.379 7.334 18.125 7.334 18.125C6.934 17.106 6.326 16.796 6.326 16.796C5.564 16.271 6.379 16.281 6.379 16.281C7.231 16.341 7.734 17.156 7.734 17.156C8.492 18.446 9.663 18.064 9.75 17.796C9.831 17.231 10.063 16.849 10.325 16.587C8.741 16.325 7.063 15.684 7.063 11.806C7.063 10.981 7.356 10.305 7.844 9.773C7.756 9.511 7.494 8.726 7.906 7.74C7.906 7.74 8.531 7.54 9.688 8.271C10.315 8.096 10.981 8.008 11.656 8C12.331 8.008 13.003 8.096 13.625 8.271C14.781 7.54 15.406 7.74 15.406 7.74C15.828 8.726 15.566 9.511 15.469 9.773C15.957 10.305 16.25 10.981 16.25 11.806C16.25 15.698 14.563 16.319 12.969 16.587C13.281 16.854 13.531 17.406 13.531 18.31C13.531 19.881 13.522 21.181 13.522 21.181C13.522 21.455 13.697 21.766 14.203 21.281C18.388 20.017 22.5 16.396 22.5 12.017C22.5 6.484 18.023 2 12.5 2Z"
+              fill="white"
+            />
+          </svg>
+        </a>
+      </div>
+    </nav>
+    <!-- Project Modal Popup -->
+    <div id="project-modal" class="project-modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div id="modal-image" class="modal-image"></div>
+        <h2 id="modal-title">Project Title</h2>
+        <div id="modal-body">
+          <p>Project details go here.</p>
+        </div>
+      </div>
+    </div>
 
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <!-- Coursework Modal Popup -->
+    <div id="coursework-modal" class="coursework-modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 id="coursework-title">Coursework</h2>
+        <div id="coursework-body" class="coursework-body">
+          <p>Course details go here.</p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

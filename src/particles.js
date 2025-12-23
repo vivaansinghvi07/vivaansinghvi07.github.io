@@ -1,4 +1,3 @@
-// Particles animation for background
 document.addEventListener("DOMContentLoaded", () => {
 
     const canvas = document.getElementById('background-canvas');
@@ -84,6 +83,5 @@ document.addEventListener("DOMContentLoaded", () => {
     initParticles();
     animateParticles();
 
-    // Expose ripple function
     window.rippleParticles = rippleParticles;
 });
