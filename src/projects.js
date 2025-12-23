@@ -15,8 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
             { name: 'EECS 471: GPU Programming', description: 'Learned about CUDA programming and best practices through a variety of parallel algorithms, such as matrix multiplication, reduction, convolution, histogramming, and scanning.' },
             { name: 'EECS 445: Machine Learning', description: 'Studied machine learning fundamentals, from logistic regression and decision trees to deep generative models like diffusion.' },
             { name: 'EECS 498: Foundations of Language Models', description: 'Examined every part of modern large language models, covering tokenization, attention, transformers, training, fine-tuning, reinforcement learning, test-time scaling, LLM capabilities, and alternative architectures.'},
-            { name: 'EECS 479: Quantum Computing (planned)', description: 'Will develop understanding of quantum computing and its applications, as well as going over classifical algorithms such as Shor\'s, Grover\'s, and the Deutsch-Jozaa, as well as error correction codes.' },
-            { name: 'EECS 498: Computer Graphics and Generative Models (planned)', description: 'Will cover 3D rendering techinques like rasterization and ray-tracing, then will cover generative modeling such as NeRFs or Gaussian Splatting.'},
+            { name: 'EECS 479: Quantum Computing (planned)', description: 'Will develop understanding of quantum computing and its applications, as well as going over classical algorithms such as Shor\'s, Grover\'s, and the Deutsch-Jozaa, as well as error correction codes.' },
+            { name: 'EECS 498: Computer Graphics and Generative Models (planned)', description: 'Will cover 3D rendering techniques like rasterization and ray-tracing, then will cover generative modeling such as NeRFs or Gaussian Splatting.'},
             { name: 'EECS 498: Capstone: Automated Programming (planned)', description: 'Will study the field of program synthesis, covering traditional methods as well as more modern neuro-symbolic approaches. Course will contain a semester-long capstone project.'},
         ]
     }
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     5: {
         title: 'High-Pass Spectral Adversarial Defense',
-        description: 'Uses frequency domain transformations and a trained VGG-16 CNN to detect adversarial images against classification models. Rigorously benchmarked with similiar prior approaches, proving a detection rate of over 99% on basic adversarial images. Additionally developed a new, imperceptible adversarial attack. Work done during an internship at Oak Ridge National Laboratory.',
+        description: 'Uses frequency domain transformations and a trained VGG-16 CNN to detect adversarial images against classification models. Rigorously benchmarked with similar prior approaches, proving a detection rate of over 99% on basic adversarial images. Additionally developed a new, imperceptible adversarial attack. Work done during an internship at Oak Ridge National Laboratory.',
         image: 'assets/images/hsad.png'
     },
     6: {
@@ -54,8 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
         image: 'assets/images/bim.png'
     },
     7: {
-        title: 'High-Throughout Leaf Processing Pipeline',
-        description: 'Integrates classifical computer vision techinques with modern machine learning methods (namely, OCR with PaddleOCR and segmentation with SAM) to complete a series of tasks on a dataset of leaf images. Tasks included OCR with printed labels, phenotyping, environment inference, and location approximation. Won the best paper award for the SMC Data Challenge 2023.',
+        title: 'High-Throughput Leaf Processing Pipeline',
+        description: 'Integrates classical computer vision techniques with modern machine learning methods (namely, OCR with PaddleOCR and segmentation with SAM) to complete a series of tasks on a dataset of leaf images. Tasks included OCR with printed labels, phenotyping, environment inference, and location approximation. Won the best paper award for the SMC Data Challenge 2023.',
         image: 'assets/images/smc.png'
     },
     8: {
