@@ -12,14 +12,14 @@
   );
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 600px) {
   :root {
-    --font-size-large: 2em;
-    --font-size-medium: 1em;
+    --font-size-large: 2.5em;
+    --font-size-medium: 1.2em;
   }
 }
 
-@media screen and (min-width: 850px) and (max-width: 1250px) {
+@media screen and (min-width: 600px) and (max-width: 1250px) {
   :root {
     --font-size-large: 4em;
     --font-size-medium: 2em;
@@ -28,8 +28,8 @@
 
 @media screen and (min-width: 1250px) {
   :root {
-    --font-size-large: 6em;
-    --font-size-medium: 3em;
+    --font-size-large: 5em;
+    --font-size-medium: 2.5em;
   }
 }
 
@@ -313,32 +313,6 @@ body {
 
 .contact p {
   font-size: 1.1em;
-}
-
-.main-page-menu-items {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-}
-
-.main-page-menu-items > div {
-  margin: var(--font-size-medium);
-  width: fit-content;
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr;
-  place-items: center;
-}
-
-.main-page-menu-image {
-  grid-row: 1;
-  width: var(--font-size-large);
-  height: auto;
-}
-
-.main-page-menu-text {
-  grid-row: 2;
-  font-size: var(--font-size-medium);
 }
 
 .main-page-container {
