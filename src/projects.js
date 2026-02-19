@@ -9,15 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
     1: {
         title: 'Select Coursework',
         courses: [
-            { name: 'EECS 482: Operating Systems', description: 'Covered operating systems fundamentals, such as abstraction, concurrency, memory management, and networking. Built a thread library, virtual memory pager, and a concurrent network fileserver.' },
-            { name: 'EECS 471: GPU Programming', description: 'Learned about CUDA programming and best practices through a variety of parallel algorithms, such as matrix multiplication, reduction, convolution, histogramming, and scanning.' },
-            { name: 'EECS 445: Machine Learning', description: 'Studied machine learning fundamentals, from logistic regression and decision trees to deep generative models like diffusion.' },
-            { name: 'EECS 498: Foundations of Language Models', description: 'Examined every part of modern large language models, covering tokenization, attention, transformers, training, fine-tuning, reinforcement learning, test-time scaling, LLM capabilities, and alternative architectures.'},
-            { name: 'EECS 370: Introduction to Computer Organization', description: 'Studied how computers work at a low level, learning ARM assembly and how to build a pipelined processor for a custom ISA. Also studied caches and virtual memory.' },
-            { name: 'EECS 376: Foundations of Computer Science', description: 'Developed a theoretical foundation of computer science through algorithm analysis, time complexity, Turing Machines, P vs NP, and basic cryptography.' },
-            { name: 'EECS 479: Quantum Computing (planned)', description: 'Will develop understanding of quantum computing and its applications, as well as going over classical algorithms such as Shor\'s, Grover\'s, and the Deutsch-Jozaa, as well as error correction codes.' },
-            { name: 'EECS 498: Computer Graphics and Generative Models (planned)', description: 'Will cover 3D rendering techniques like rasterization and ray-tracing, then will cover generative modeling such as NeRFs or Gaussian Splatting.'},
-            { name: 'EECS 498: Capstone: Automated Programming (planned)', description: 'Will study the field of program synthesis, covering traditional methods as well as more modern neuro-symbolic approaches. Course will contain a semester-long capstone project.'},
+            { name: 'Operating Systems', description: 'Covered operating systems fundamentals, including abstraction, concurrency, memory management, and networking. Built a thread library, a virtual memory pager, and a concurrent network file server.' },
+            { name: 'GPU Programming', description: 'Learned CUDA programming and best practices through implementing parallel algorithms such as matrix multiplication, reduction, convolution, histogramming, and scanning.' },
+            { name: 'Machine Learning', description: 'Studied machine learning fundamentals, ranging from logistic regression and decision trees to deep generative models such as diffusion models.' },
+            { name: 'Foundations of Language Models', description: 'Examined every component of modern large language models, including tokenization, attention mechanisms, transformers, training, fine-tuning, reinforcement learning, test-time scaling, model capabilities, and alternative architectures.' },
+            { name: 'Introduction to Computer Organization', description: 'Studied low-level computer architecture, including ARM assembly, pipelined processor design for a custom ISA, caches, and virtual memory.' },
+            { name: 'Foundations of Computer Science', description: 'Developed a theoretical foundation in computer science, covering algorithm analysis, time complexity, Turing machines, P vs. NP, and basic cryptography.' },
+            { name: 'Distributed Systems (current)', description: 'Studying how to engineer scalable, fault-tolerant, and consistent distributed systems by exploring techniques such as Primary-Backup, Paxos, and sharding, along with concurrent programming in Go.' },
+            { name: 'Computer Graphics and Generative Models (current)', description: 'Covering 3D rendering techniques such as rasterization and ray tracing, as well as 3D reconstruction methods (e.g., neural radiance fields) and generative models (e.g., diffusion models).' },
+            { name: 'Automated Programming (current)', description: 'Studying program synthesis, including traditional approaches as well as modern neuro-symbolic methods. The course includes a semester-long capstone project.' },
         ]
     }
     };
